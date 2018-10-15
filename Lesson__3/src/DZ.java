@@ -26,6 +26,7 @@ import java.util.*;
         System.out.println(map);
     }
 
+
      static void task2() {
          PhoneBook contackt = new PhoneBook();
 

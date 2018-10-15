@@ -61,7 +61,6 @@ public class Collection {
 
         System.out.println("TreeSet");
         TreeSet<String> ts = new TreeSet<>();
-
         ts.add("C");
         ts.add("A");
         ts.add("B");
@@ -69,7 +68,6 @@ public class Collection {
         ts.add("F");
         ts.add("D");
         System.out.println(ts);
-
         System.out.println("HashMap");
         HashMap<String, String> hm = new HashMap<>();
         hm.put("Russia", "Moscow");
