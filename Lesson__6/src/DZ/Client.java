@@ -6,7 +6,7 @@ import java.net.*;
 class Client {
     public static void main(String[] args) throws IOException {
         CLI cli = new CLI();
-        System.out.println("Client started. Connecting to localhost: 1111");
+        System.out.println("Клиент запущен. Соединение местное, порт 8189");
 
         new Thread() {
             public void run() {
@@ -38,7 +38,7 @@ class CLI {
     String userMSG, serverMSG;
 
     public CLI() throws IOException {
-        socket = new Socket("localhost", 1111);
+        socket = new Socket("localhost", 8189);
         in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         out = new PrintWriter(socket.getOutputStream(), true);
         console = new BufferedReader(new InputStreamReader(System.in));
@@ -48,7 +48,7 @@ class CLI {
         while (true) {
             if ((userMSG = console.readLine()) != null) {
                 out.println(userMSG);
-                if (userMSG.equalsIgnoreCase("close") || userMSG.equalsIgnoreCase("exit")) break;
+                if (userMSG.equalsIgnoreCase("закрыто") || userMSG.equalsIgnoreCase("выход")) break;
             }
         }
     }

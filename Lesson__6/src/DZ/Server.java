@@ -27,7 +27,6 @@ class Server {
                 }
             }
         }.start();
-
         new Thread() {
             public void run() {
                 try {
@@ -37,8 +36,6 @@ class Server {
                 }
             }
         }.start();
-
-        //s.writeToConsole();
     }
 }
 
@@ -52,32 +49,32 @@ class SRV {
 
     void start() {
         try {
-            serverSocket = new ServerSocket(1111);
+            serverSocket = new ServerSocket(8189);
         } catch (IOException e) {
-            System.out.println("Can't open port 1111");
+            System.out.println("Не удается открыть порт 8189");
             System.exit(1);
         }
-        System.out.print("Server started. Waiting for a client...");
+        System.out.print("Сервер запущен, ожидаем клиента");
     }
 
     void catchClient() throws IOException {
         try {
             socket = serverSocket.accept();
-            System.out.println("Client connected");
+            System.out.println("Соединение с клиентом установленно");
         } catch (IOException e) {
-            System.out.println("Can't accept");
+            System.out.println("нет соединения");
             System.exit(1);
         }
 
-        in  = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        out = new PrintWriter(socket.getOutputStream(),true);
+        in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        out = new PrintWriter(socket.getOutputStream(), true);
 
-        System.out.println("Wait for messages...");
+        System.out.println("Ожидается сообщение");
     }
 
     void sendMessage(String msg) throws IOException {
-        if (msg.equalsIgnoreCase("exit")) close();
-        out.println("S ::: " + msg);
+        if (msg.equalsIgnoreCase("выход")) close();
+        out.println("Сервер ::: " + msg);
         System.out.println(msg);
     }
 
